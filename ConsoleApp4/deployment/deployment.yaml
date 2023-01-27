@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+      annotations:
+        sidecar.opentelemetry.io/inject: "true"
+        instrumentation.opentelemetry.io/inject-dotnet: "true"
+    spec:
+      containers:
+        - name: my-container
+          image: docker.io/library/second-image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
