@@ -1,5 +1,7 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
+#works:
+#FROM mcr.microsoft.com/dotnet/runtime:6.0 AS base
+#fails on starup:
 FROM mcr.microsoft.com/azure-functions/dotnet:4 AS base
 WORKDIR /app
 
